@@ -28,11 +28,7 @@ Overall, the aim of a period tracker app is to enhance users' understanding of t
 health, promote reproductive awareness, and facilitate better management of their menstrual 
 cycles and related symptoms.
 
-Download latest version at F-Droid:  
-https://f-droid.org/repository/browse/?fdid=de.arnowelzel.android.periodical
 
-Download latest version as APK:  
-http://arnowelzel.de/download/Periodical.apk
 
 **Tools  used to build this project:**
 
