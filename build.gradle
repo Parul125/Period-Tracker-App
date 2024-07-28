@@ -1,15 +1,63 @@
-plugins {
-    id 'com.android.application' version '8.3.2' apply false
-    id 'com.android.library' version '8.3.2' apply false
-    id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
-}
+apply plugin: 'com.android.application'
 
-allprojects {
-    tasks.withType(JavaCompile){
-        options.compilerArgs <<"-Xlint:deprecation"
+android {
+    defaultConfig {
+        applicationId "de.arnowelzel.android.periodical"
+        compileSdk 34
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 99
+        versionName "1.75"
+        buildConfigField "String", "VERSION_YEAR", "\"2023\""
+
+        return void
     }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    bundle {
+        language {
+            // Specifies that the app bundle should not support configuration APKs for
+            // language resources. These resources are instead packaged with each base and
+            // dynamic feature APK.
+            //
+            // This allows us to choose any of the supported languages within the app
+            enableSplit = false
+        }
+    }
+    namespace 'de.arnowelzel.android.periodical'
+
+    return void
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.annotation:annotation:1.6.0'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "com.github.YarikSOffice:lingver:1.3.0"
+
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }
 }

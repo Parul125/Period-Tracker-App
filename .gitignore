@@ -1,11 +1,1 @@
-*.iml
-.gradle
-/local.properties
-/.idea
-.DS_Store
-/captures
 /build
-/app/build
-/app/release/
-/.vs
-java_pid*.hprof
